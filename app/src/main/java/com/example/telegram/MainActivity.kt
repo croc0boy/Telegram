@@ -2,6 +2,8 @@ package com.example.telegram
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.widget.LinearLayoutCompat
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.telegram.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -13,9 +15,12 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val accountAdapter = AccountAdapter(accounts)
 
-
-
-
+        binding.rvAccounts.apply {
+            layoutManager =
+                LinearLayoutManager(this@MainActivity, LinearLayoutManager.VERTICAL,false)
+            adapter = accountAdapter
+        }
     }
 }
